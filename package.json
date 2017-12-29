@@ -4,7 +4,10 @@
   "version": "0.0.2",
   "dependencies": {
     "react-dom": "16.0.0",
-    "react": "16.0.0"
+    "react": "16.0.0",
+    "redux": "*",
+    "react-redux": "*",
+    "styled-components": "*"
   },
   "devDependencies": {
     "react-scripts": "1.0.0"
