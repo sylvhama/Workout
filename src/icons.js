@@ -5,3 +5,4 @@ export const minus =
 export const play = 'M192 128l640 384-640 384z';
 export const pause = 'M128 128h320v768h-320zM576 128h320v768h-320z';
 export const stop = 'M128 128h768v768h-768z';
+export const previous = 'M256 896v-768h128v352l320-320v704l-320-320v352z';
