@@ -1,5 +1,5 @@
 # Workout :muscle:
-This project was created with [CodeSandbox](https://codesandbox.io/s/github/sylvhama/Workout) and bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project was created with [CodeSandbox](https://codesandbox.io/s/github/sylvhama/Workout) and bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). Icons were found on [IcoMoon](https://icomoon.io).
 My goal was to have some fun with:
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org)
@@ -10,7 +10,7 @@ My goal was to have some fun with:
 
 
 ## What is it for?
-Create a set of timers for your exercise routine.
+Create a set of timers for your exercise routine. I wanted to make a PWA equivalent of [Interval Timer](https://play.google.com/store/apps/details?id=cc.dreamspark.intervaltimer&hl=en).
 
 ## Available Scripts
 

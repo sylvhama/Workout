@@ -8,10 +8,10 @@ const StyledButton = styled.button`
   font-size: 1.5rem;
   background: none;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.5);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
   transition: background-color 0.25s ease;
   &:active {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
   }
 `;
 

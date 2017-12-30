@@ -3,8 +3,8 @@
   "description": "Progressive Web App which will give you a six-pack!",
   "version": "0.0.2",
   "dependencies": {
-    "react-dom": "16.0.0",
-    "react": "16.0.0",
+    "react-dom": "16.2.0",
+    "react": "16.2.0",
     "redux": "3.7.2",
     "react-redux": "5.0.6",
     "styled-components": "2.4.0"

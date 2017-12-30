@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-compoenents';
+import styled from 'styled-components';
 
 const StyledSvg = styled.svg`
   display: inline-block;
