@@ -1,9 +1,16 @@
 # Workout :muscle:
 This project was created with [CodeSandbox](https://codesandbox.io/s/github/sylvhama/Workout) and bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-My goal was to have some fun with [React](https://reactjs.org/), [styled-components](https://www.styled-components.com/) and [Redux](https://redux.js.org). Thanks to [Prettier](https://prettier.io/) for making my code looking... pretty :flushed:.
+My goal was to have some fun with:
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org)
+- [styled-components](https://www.styled-components.com/)
+- [CSS Grid](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228)
+- [Speech Synthesis API](https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API)
+- [Prettier](https://prettier.io/)
+
 
 ## What is it for?
-Create a set of timers for your daily exercise routine.
+Create a set of timers for your exercise routine.
 
 ## Available Scripts
 
