@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import timer from './timer';
+import config from './config';
 import nightMode from './nightMode';
 
 const workoutApp = combineReducers({
-  timer,
+  config,
   nightMode
 });
 
