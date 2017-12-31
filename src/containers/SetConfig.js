@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
+  resetConfig,
   decrementCounter,
   incrementCounter,
   incrementWorkInterval,
@@ -10,13 +11,16 @@ import {
 } from '../actions';
 import Config from '../components/Config';
 
-const mapStateToProps = ({ timer }) => ({
-  counter: timer.counter,
-  workInterval: timer.workInterval,
-  restInterval: timer.restInterval
+const mapStateToProps = ({ config }) => ({
+  counter: config.counter,
+  workInterval: config.workInterval,
+  restInterval: config.restInterval
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  resetConfig: () => {
+    dispatch(resetConfig());
+  },
   decrementCounter: () => {
     dispatch(decrementCounter());
   },
