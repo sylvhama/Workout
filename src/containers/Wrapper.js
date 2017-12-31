@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const StyledMain = styled.div`
-  padding: 1rem;
   width: 100vw;
   height: 100vh;
   display: grid;

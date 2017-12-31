@@ -7,7 +7,7 @@ import NightModeToggler from '../containers/NightModeToggler';
 const Header = styled.header`
   display: grid;
   justify-content: end;
-  align-content: center;
+  align-content: start;
 `;
 
 const Main = styled.main`
