@@ -74,6 +74,7 @@ export default function Config({
         <Title>How many work intervals?</Title>
         <Button
           onMouseUp={() => !isMobile && clearInterval(intervalId)}
+          onMouseLeave={() => !isMobile && clearInterval(intervalId)}
           onMouseDown={() => !isMobile && interval(decrementCounter)}
           onTouchEnd={() => clearInterval(intervalId)}
           onTouchCancel={() => clearInterval(intervalId)}
@@ -84,6 +85,7 @@ export default function Config({
         <Timer>{counter}</Timer>
         <Button
           onMouseUp={() => !isMobile && clearInterval(intervalId)}
+          onMouseLeave={() => !isMobile && clearInterval(intervalId)}
           onMouseDown={() => !isMobile && interval(incrementCounter)}
           onTouchEnd={() => clearInterval(intervalId)}
           onTouchCancel={() => clearInterval(intervalId)}
@@ -96,6 +98,7 @@ export default function Config({
         <Title>Work interval</Title>
         <Button
           onMouseUp={() => !isMobile && clearInterval(intervalId)}
+          onMouseLeave={() => !isMobile && clearInterval(intervalId)}
           onMouseDown={() => !isMobile && interval(decrementWorkInterval)}
           onTouchEnd={() => clearInterval(intervalId)}
           onTouchCancel={() => clearInterval(intervalId)}
@@ -112,6 +115,7 @@ export default function Config({
         </Timer>
         <Button
           onMouseUp={() => !isMobile && clearInterval(intervalId)}
+          onMouseLeave={() => !isMobile && clearInterval(intervalId)}
           onMouseDown={() => !isMobile && interval(incrementWorkInterval)}
           onTouchEnd={() => clearInterval(intervalId)}
           onTouchCancel={() => clearInterval(intervalId)}
@@ -124,6 +128,7 @@ export default function Config({
         <Title>Rest interval</Title>
         <Button
           onMouseUp={() => !isMobile && clearInterval(intervalId)}
+          onMouseLeave={() => !isMobile && clearInterval(intervalId)}
           onMouseDown={() => !isMobile && interval(decrementRestInterval)}
           onTouchEnd={() => clearInterval(intervalId)}
           onTouchCancel={() => clearInterval(intervalId)}
@@ -140,6 +145,7 @@ export default function Config({
         </Timer>
         <Button
           onMouseUp={() => !isMobile && clearInterval(intervalId)}
+          onMouseLeave={() => !isMobile && clearInterval(intervalId)}
           onMouseDown={() => !isMobile && interval(incrementRestInterval)}
           onTouchEnd={() => clearInterval(intervalId)}
           onTouchCancel={() => clearInterval(intervalId)}
