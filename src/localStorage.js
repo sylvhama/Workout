@@ -9,7 +9,7 @@ export const loadState = () => {
 };
 
 export const cleanState = state => ({
-  timer: state.timer,
+  config: state.config,
   nightMode: state.nightMode
 });
 
