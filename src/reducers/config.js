@@ -1,8 +1,9 @@
-const timer = (
-  state = { counter: 1, workInterval: 1, restInterval: 0 },
-  action
-) => {
+const initialState = { counter: 1, workInterval: 1, restInterval: 0 };
+
+const config = (state = initialState, action) => {
   switch (action.type) {
+    case 'RESET_CONFIG':
+      return initialState;
     case 'INCREMENT_COUNTER':
       return { ...state, counter: state.counter + 1 };
     case 'DECREMENT_COUNTER':
@@ -23,4 +24,4 @@ const timer = (
   }
 };
 
-export default timer;
+export default config;
