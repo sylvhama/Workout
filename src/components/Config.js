@@ -8,6 +8,7 @@ const Row = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0 0.25rem;
+  justify-items: center;
   align-items: center;
 `;
 
@@ -27,6 +28,11 @@ const Timer = styled.p`
   & span {
     padding: 0 0.5rem;
   }
+`;
+
+const SmallButton = styled(Button)`
+  font-size: 1rem;
+  grid-column: 1 / -1;
 `;
 
 let isMobile = false;
@@ -59,6 +65,7 @@ const interval = (fct = () => {}) => {
 };
 
 export default function Config({
+  resetConfig,
   decrementCounter,
   incrementCounter,
   counter,
@@ -158,6 +165,9 @@ export default function Config({
         >
           <Icon icon={plus} />
         </Button>
+      </Row>
+      <Row>
+        <SmallButton onClick={resetConfig}>Reset</SmallButton>
       </Row>
     </Fragment>
   );
