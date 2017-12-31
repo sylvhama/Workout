@@ -33,6 +33,12 @@ const getMinutes = time => Math.floor(time / 60);
 
 const getSeconds = (time, minutes) => time - minutes * 60;
 
+let intervalId;
+const interval = (fct = () => {}) => {
+  fct();
+  intervalId = setTimeout(() => (intervalId = setInterval(fct, 100)), 500);
+};
+
 export default function Config({
   decrementCounter,
   incrementCounter,
@@ -52,17 +58,26 @@ export default function Config({
     <Fragment>
       <Row>
         <Title>How many work intervals?</Title>
-        <Button onClick={decrementCounter}>
+        <Button
+          onMouseUp={() => clearInterval(intervalId)}
+          onMouseDown={() => interval(decrementCounter)}
+        >
           <Icon icon={minus} />
         </Button>
         <Timer>{counter}</Timer>
-        <Button onClick={incrementCounter}>
+        <Button
+          onMouseUp={() => clearInterval(intervalId)}
+          onMouseDown={() => interval(incrementCounter)}
+        >
           <Icon icon={plus} />
         </Button>
       </Row>
       <Row>
         <Title>Work interval</Title>
-        <Button onClick={decrementWorkInterval}>
+        <Button
+          onMouseUp={() => clearInterval(intervalId)}
+          onMouseDown={() => interval(decrementWorkInterval)}
+        >
           <Icon icon={minus} />
         </Button>
         <Timer>
@@ -72,13 +87,19 @@ export default function Config({
           {workIntervalSec.length === 1 ? '0' : null}
           {workIntervalSec}
         </Timer>
-        <Button onClick={incrementWorkInterval}>
+        <Button
+          onMouseUp={() => clearInterval(intervalId)}
+          onMouseDown={() => interval(incrementWorkInterval)}
+        >
           <Icon icon={plus} />
         </Button>
       </Row>
       <Row>
         <Title>Rest interval</Title>
-        <Button onClick={decrementRestInterval}>
+        <Button
+          onMouseUp={() => clearInterval(intervalId)}
+          onMouseDown={() => interval(decrementRestInterval)}
+        >
           <Icon icon={minus} />
         </Button>
         <Timer>
@@ -88,7 +109,10 @@ export default function Config({
           {restIntervalSec.length === 1 ? '0' : null}
           {restIntervalSec}
         </Timer>
-        <Button onClick={incrementRestInterval}>
+        <Button
+          onMouseUp={() => clearInterval(intervalId)}
+          onMouseDown={() => interval(incrementRestInterval)}
+        >
           <Icon icon={plus} />
         </Button>
       </Row>
