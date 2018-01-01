@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Wrapper from '../containers/Wrapper';
 import SetConfig from '../containers/SetConfig';
 import NightModeToggler from '../containers/NightModeToggler';
+import TimerContainer from '../containers/TimerContainer';
+import ControllersContainer from '../containers/ControllersContainer';
 
 const Header = styled.header`
   display: grid;
@@ -22,20 +25,22 @@ const Footer = styled.footer`
   align-content: center;
 `;
 
-function App() {
+function App({ timerShow }) {
   return (
     <Wrapper>
       <Header>
         <NightModeToggler />
       </Header>
-      <Main>
-        <SetConfig />
-      </Main>
+      <Main>{timerShow ? <TimerContainer /> : <SetConfig />}</Main>
       <Footer>
-        <NightModeToggler />
+        <ControllersContainer />
       </Footer>
     </Wrapper>
   );
 }
+
+App.propTypes = {
+  timerShow: PropTypes.bool.isRequired
+};
 
 export default App;

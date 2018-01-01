@@ -34,3 +34,17 @@ export const incrementRestInterval = () => ({
 export const decrementRestInterval = () => ({
   type: 'DECREMENT_REST_INTERVAL'
 });
+
+export const setTimerShow = show => ({
+  type: 'SET_TIMER_SHOW',
+  show
+});
+
+export const setTimerCounter = counter => ({
+  type: 'SET_TIMER_COUNTER',
+  counter
+});
+
+export const decrementTimerCounter = () => ({
+  type: 'DECREMENT_TIMER_COUNTER'
+});
