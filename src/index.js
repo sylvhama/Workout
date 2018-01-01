@@ -6,8 +6,7 @@ import throttle from 'lodash/throttle';
 import App from './components/App';
 import reducer from './reducers';
 import { loadState, cleanState, saveState } from './localStorage';
-
-const store = createStore(reducer, cleanState(loadState()));
+const store = createStore(reducer, cleanState(loadState() || {}));
 
 store.subscribe(throttle(() => saveState(cleanState(store.getState()))), 1000);
 
