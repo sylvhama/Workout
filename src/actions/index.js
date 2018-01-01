@@ -7,6 +7,10 @@ export const setNightMode = nightMode => ({
   nightMode
 });
 
+export const resetConfig = () => ({
+  type: 'RESET_CONFIG'
+});
+
 export const incrementCounter = () => ({
   type: 'INCREMENT_COUNTER'
 });
