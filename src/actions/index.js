@@ -35,14 +35,17 @@ export const decrementRestInterval = () => ({
   type: 'DECREMENT_REST_INTERVAL'
 });
 
-export const setTimerShow = show => ({
-  type: 'SET_TIMER_SHOW',
-  show
+export const setTimerStart = counter => ({
+  type: 'SET_TIMER_START',
+  counter
 });
 
-export const setTimerCounter = counter => ({
-  type: 'SET_TIMER_COUNTER',
-  counter
+export const setTimerPause = () => ({
+  type: 'SET_TIMER_PAUSE'
+});
+
+export const setTimerStop = () => ({
+  type: 'SET_TIMER_STOP'
 });
 
 export const decrementTimerCounter = () => ({

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const StyledSvg = styled.svg`
   display: inline-block;
-  verticalAlign: middle;
+  vertical-align: middle;
   & path {
     fill: currentColor;
   }

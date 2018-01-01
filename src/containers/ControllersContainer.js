@@ -1,18 +1,30 @@
 import { connect } from 'react-redux';
-import { setTimerShow, setTimerCounter } from '../actions';
+import {
+  setTimerStart,
+  setTimerPause,
+  setTimerStop,
+  decrementTimerCounter
+} from '../actions';
 import Controllers from '../components/Controllers';
 
 const mapStateToProps = state => ({
   counter: state.config.counter,
-  timerShow: state.timer.show
+  timerShow: state.timer.show,
+  timerPlay: state.timer.play
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  setTimerShow: show => {
-    dispatch(setTimerShow(show));
+  setTimerStart: () => {
+    dispatch(setTimerStart());
   },
-  setTimerCounter: counter => {
-    dispatch(setTimerCounter(counter));
+  setTimerPause: () => {
+    dispatch(setTimerPause());
+  },
+  setTimerStop: () => {
+    dispatch(setTimerStop());
+  },
+  decrementTimerCounter: counter => {
+    dispatch(decrementTimerCounter());
   }
 });
 
