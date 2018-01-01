@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
-const getMinutes = duration => Math.floor(duration / 60);
-
-const getSeconds = (duration, minutes) => duration - minutes * 60;
+import { getSeconds, getMinutes } from '../scripts/time';
 
 export default function MinutesSeconds({ duration }) {
   const minutes = getMinutes(duration).toString();

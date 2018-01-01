@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import MinutesSeconds from './MinutesSeconds';
 import Button from './Button';
 import Icon from './Icon';
-import { plus, minus } from '../icons';
+import { plus, minus } from '../scripts/icons';
 
 const Row = styled.div`
   display: grid;
