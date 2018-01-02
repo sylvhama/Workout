@@ -1,16 +1,18 @@
 import { connect } from 'react-redux';
-import { decrementTimerCounter } from '../actions';
+import { decrementTimerInterval, decrementTimerIndex } from '../actions';
 import Timer from '../components/Timer';
 
 const mapStateToProps = state => ({
-  counter: state.timer.counter,
-  workInterval: state.config.workInterval,
-  restInterval: state.config.restInterval
+  {...state.timer.intervals[state.timer.index]},
+  counter: state.config.counter
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  decrementCounter: () => {
-    dispatch(decrementTimerCounter());
+  decrementInterval: () => {
+    dispatch(decrementTimerInterval());
+  },
+  decrementIndex: () => {
+    dispatch(decrementTimerIndex());
   }
 });
 

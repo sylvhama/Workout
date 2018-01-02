@@ -1,10 +1,5 @@
 import { connect } from 'react-redux';
-import {
-  setTimerStart,
-  setTimerPause,
-  setTimerStop,
-  decrementTimerCounter
-} from '../actions';
+import { setTimerStart, setTimerPause, setTimerStop } from '../actions';
 import Controllers from '../components/Controllers';
 
 const mapStateToProps = state => ({
@@ -14,17 +9,14 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  setTimerStart: () => {
-    dispatch(setTimerStart());
+  setTimerStart: intervals => {
+    dispatch(setTimerStart(intervals));
   },
   setTimerPause: () => {
     dispatch(setTimerPause());
   },
   setTimerStop: () => {
     dispatch(setTimerStop());
-  },
-  decrementTimerCounter: counter => {
-    dispatch(decrementTimerCounter());
   }
 });
 
