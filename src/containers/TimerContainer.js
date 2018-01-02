@@ -3,7 +3,7 @@ import { decrementTimerInterval, decrementTimerIndex } from '../actions';
 import Timer from '../components/Timer';
 
 const mapStateToProps = state => ({
-  {...state.timer.intervals[state.timer.index]},
+  ...state.timer.intervals[state.timer.index],
   counter: state.config.counter
 });
 

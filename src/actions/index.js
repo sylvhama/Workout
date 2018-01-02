@@ -48,10 +48,10 @@ export const setTimerStop = () => ({
   type: 'SET_TIMER_STOP'
 });
 
-export const decrementTimerCounter = () => ({
+export const decrementTimerInterval = () => ({
   type: 'DECREMENT_TIMER_INTERVAL'
 });
 
-export const decrementTimerCounter = () => ({
+export const decrementTimerIndex = () => ({
   type: 'DECREMENT_TIMER_INDEX'
 });

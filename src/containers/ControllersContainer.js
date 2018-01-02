@@ -4,6 +4,8 @@ import Controllers from '../components/Controllers';
 
 const mapStateToProps = state => ({
   counter: state.config.counter,
+  workInterval: state.config.workInterval,
+  restInterval: state.config.restInterval,
   timerShow: state.timer.show,
   timerPlay: state.timer.play
 });

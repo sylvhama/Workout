@@ -20,6 +20,8 @@ const Play = styled(Button)`
 
 export default function Controllers({
   counter,
+  workInterval,
+  restInterval,
   timerShow,
   timerPlay,
   setTimerStart,
@@ -30,7 +32,15 @@ export default function Controllers({
     <Nav>
       {!timerPlay ? (
         <Play
-          onClick={() => setTimerStart(counter)}
+          onClick={() => {
+            const intervals = [{ interval: 5, type: 'start' }];
+            for (let i = 0; i < counter; i++) {
+              intervals.push({ interval: workInterval, type: 'workout' });
+              if (restInterval)
+                intervals.push({ interval: restInterval, type: 'rest' });
+            }
+            setTimerStart(intervals);
+          }}
           timerShow={timerShow}
           timerPlay={timerPlay}
         >
@@ -52,6 +62,8 @@ export default function Controllers({
 
 Controllers.propTypes = {
   counter: PropTypes.number.isRequired,
+  workInterval: PropTypes.number.isRequired,
+  restInterval: PropTypes.number.isRequired,
   timerShow: PropTypes.bool.isRequired,
   timerPlay: PropTypes.bool.isRequired,
   setTimerStart: PropTypes.func.isRequired,
