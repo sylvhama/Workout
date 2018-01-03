@@ -17,7 +17,7 @@ test('should handle SET_TIMER_START', () => {
   expect(timer(initialState, { type: 'SET_TIMER_START', intervals })).toEqual({
     show: true,
     play: true,
-    index: intervals.length - 1,
+    index: 0,
     intervals
   });
 });
@@ -35,7 +35,7 @@ test('should handle SET_TIMER_STOP', () => {
       {
         show: true,
         play: true,
-        index: intervals.length - 1,
+        index: 0,
         intervals
       },
       { type: 'SET_TIMER_STOP' }
@@ -44,13 +44,13 @@ test('should handle SET_TIMER_STOP', () => {
 });
 
 test('should handle DECREMENT_TIMER_INTERVAL', () => {
-  const index = intervals.length - 1;
+  const index = 0;
   expect(
     timer(
       {
         show: true,
         play: true,
-        index: intervals.length - 1,
+        index,
         intervals
       },
       { type: 'DECREMENT_TIMER_INTERVAL' }
@@ -60,9 +60,28 @@ test('should handle DECREMENT_TIMER_INTERVAL', () => {
     play: true,
     index,
     intervals: [
-      ...intervals.slice(0, index - 1),
+      ...intervals.slice(0, index),
       { ...intervals[index], interval: intervals[index].interval - 1 },
       ...intervals.slice(index + 1)
     ]
+  });
+});
+
+test('should handle INCREMENT_TIMER_INDEX', () => {
+  expect(
+    timer(
+      {
+        show: true,
+        play: true,
+        index: 0,
+        intervals
+      },
+      { type: 'INCREMENT_TIMER_INDEX' }
+    )
+  ).toEqual({
+    show: true,
+    play: true,
+    index: 1,
+    intervals
   });
 });

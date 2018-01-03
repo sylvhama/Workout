@@ -1,18 +1,27 @@
 import { connect } from 'react-redux';
-import { decrementTimerInterval, decrementTimerIndex } from '../actions';
+import {
+  decrementTimerInterval,
+  incrementTimerIndex,
+  setTimerStop
+} from '../actions';
 import Timer from '../components/Timer';
 
 const mapStateToProps = state => ({
   ...state.timer.intervals[state.timer.index],
-  counter: state.config.counter
+  index: state.timer.index,
+  length: state.timer.intervals.length,
+  play: state.timer.play
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   decrementInterval: () => {
     dispatch(decrementTimerInterval());
   },
-  decrementIndex: () => {
-    dispatch(decrementTimerIndex());
+  incrementIndex: () => {
+    dispatch(incrementTimerIndex());
+  },
+  setTimerStop: () => {
+    dispatch(setTimerStop());
   }
 });
 

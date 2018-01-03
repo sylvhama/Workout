@@ -11,7 +11,7 @@ const timer = (state = initialState, action) => {
       return {
         show: true,
         play: true,
-        index: action.intervals.length - 1,
+        index: 0,
         intervals: action.intervals
       };
     case 'SET_TIMER_PAUSE':
@@ -23,13 +23,13 @@ const timer = (state = initialState, action) => {
       return {
         ...state,
         intervals: [
-          ...intervals.slice(0, index - 1),
+          ...intervals.slice(0, index),
           { ...intervals[index], interval: intervals[index].interval - 1 },
           ...intervals.slice(index + 1)
         ]
       };
-    case 'DECREMENT_TIMER_INDEX':
-      return { ...state, index: state.index - 1 };
+    case 'INCREMENT_TIMER_INDEX':
+      return { ...state, index: state.index + 1 };
     default:
       return state;
   }

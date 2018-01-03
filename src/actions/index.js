@@ -52,6 +52,6 @@ export const decrementTimerInterval = () => ({
   type: 'DECREMENT_TIMER_INTERVAL'
 });
 
-export const decrementTimerIndex = () => ({
-  type: 'DECREMENT_TIMER_INDEX'
+export const incrementTimerIndex = () => ({
+  type: 'INCREMENT_TIMER_INDEX'
 });
