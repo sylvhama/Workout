@@ -37,6 +37,9 @@ class Timer extends Component {
       case 'rest':
         speech = 'Rest.';
         break;
+      case 'end':
+        speech = 'Good job!';
+        break;
       default:
         return;
     }
@@ -63,6 +66,7 @@ class Timer extends Component {
     } = this.props;
     if (interval === 0 && index + 1 === length) {
       clearInterval(intervalId);
+      this.speak('end');
       setTimerStop();
     } else if (!nextProps.play) clearInterval(intervalId);
     else if (!play) this.initInterval();
