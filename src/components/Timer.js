@@ -25,11 +25,34 @@ class Timer extends Component {
     intervalId = setInterval(() => this.props.decrementInterval(), 1000);
   };
 
-  componentDidMount() {
-    this.initInterval();
+  speak(type) {
+    let speech;
+    switch (type) {
+      case 'start':
+        speech = 'Get ready.';
+        break;
+      case 'workout':
+        speech = 'Workout!';
+        break;
+      case 'rest':
+        speech = 'Rest.';
+        break;
+      default:
+        return;
+    }
+    const utterance = new SpeechSynthesisUtterance(speech);
+    utterance.voice = window.speechSynthesis.getVoices()[4];
+    utterance.rate = 1.1;
+    utterance.pitch = 1.1;
+    window.speechSynthesis.speak(utterance);
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  componentDidMount() {
+    this.initInterval();
+    this.speak('start');
+  }
+
+  componentWillUpdate(nextProps) {
     const {
       length,
       interval,
@@ -44,6 +67,12 @@ class Timer extends Component {
     } else if (!nextProps.play) clearInterval(intervalId);
     else if (!play) this.initInterval();
     else if (interval === 0) incrementIndex();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!window.hasOwnProperty('speechSynthesis')) return;
+    const { index, type } = this.props;
+    if (index !== prevProps.index) this.speak(type);
   }
 
   componentWillUnmount() {

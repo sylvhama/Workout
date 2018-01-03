@@ -19,3 +19,5 @@ render(
   document.getElementById('root')
 );
 register();
+if (window.hasOwnProperty('speechSynthesis'))
+  window.speechSynthesis.getVoices();
