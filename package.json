@@ -2,6 +2,7 @@
   "name": "workout",
   "description": "Progressive Web App which will give you a six-pack!",
   "version": "0.0.2",
+  "homepage": "https://workout.shamann.fr/",
   "dependencies": {
     "lodash": "4.17.4",
     "react-dom": "16.2.0",
