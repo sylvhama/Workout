@@ -7,15 +7,15 @@ const mapStateToProps = state => ({
   workInterval: state.config.workInterval,
   restInterval: state.config.restInterval,
   timerShow: state.timer.show,
-  timerPlay: state.timer.play
+  timerPause: state.timer.pause
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   setTimerStart: intervals => {
     dispatch(setTimerStart(intervals));
   },
-  setTimerPause: () => {
-    dispatch(setTimerPause());
+  setTimerPause: pause => {
+    dispatch(setTimerPause(pause));
   },
   setTimerStop: () => {
     dispatch(setTimerStop());

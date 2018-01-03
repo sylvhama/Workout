@@ -15,7 +15,7 @@ const Nav = styled.nav`
 
 const Play = styled(Button)`
   ${props =>
-    !props.timerShow && !props.timerPlay ? 'grid-column: 1 / -1;' : null};
+    !props.timerShow && props.timerPause ? 'grid-column: 1 / -1;' : null};
 `;
 
 export default function Controllers({
@@ -23,31 +23,33 @@ export default function Controllers({
   workInterval,
   restInterval,
   timerShow,
-  timerPlay,
+  timerPause,
   setTimerStart,
   setTimerPause,
   setTimerStop
 }) {
   return (
     <Nav>
-      {!timerPlay ? (
+      {timerPause ? (
         <Play
           onClick={() => {
-            const intervals = [{ interval: 5, type: 'start' }];
-            for (let i = 0; i < counter; i++) {
-              intervals.push({ interval: workInterval, type: 'workout' });
-              if (restInterval)
-                intervals.push({ interval: restInterval, type: 'rest' });
-            }
-            setTimerStart(intervals);
+            if (!timerShow) {
+              const intervals = [{ interval: 5, type: 'start' }];
+              for (let i = 0; i < counter; i++) {
+                intervals.push({ interval: workInterval, type: 'workout' });
+                if (restInterval)
+                  intervals.push({ interval: restInterval, type: 'rest' });
+              }
+              setTimerStart(intervals);
+            } else setTimerPause(false);
           }}
           timerShow={timerShow}
-          timerPlay={timerPlay}
+          timerPause={timerPause}
         >
           <Icon icon={play} size={32} />
         </Play>
       ) : (
-        <Button onClick={setTimerPause}>
+        <Button onClick={() => setTimerPause(true)}>
           <Icon icon={pause} size={32} />
         </Button>
       )}
@@ -65,7 +67,7 @@ Controllers.propTypes = {
   workInterval: PropTypes.number.isRequired,
   restInterval: PropTypes.number.isRequired,
   timerShow: PropTypes.bool.isRequired,
-  timerPlay: PropTypes.bool.isRequired,
+  timerPause: PropTypes.bool.isRequired,
   setTimerStart: PropTypes.func.isRequired,
   setTimerPause: PropTypes.func.isRequired,
   setTimerStop: PropTypes.func.isRequired

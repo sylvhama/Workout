@@ -1,6 +1,6 @@
 export const initialState = {
   show: false,
-  play: false,
+  pause: true,
   index: 0,
   intervals: []
 };
@@ -10,12 +10,12 @@ const timer = (state = initialState, action) => {
     case 'SET_TIMER_START':
       return {
         show: true,
-        play: true,
+        pause: false,
         index: 0,
         intervals: action.intervals
       };
     case 'SET_TIMER_PAUSE':
-      return { ...state, play: false };
+      return { ...state, pause: action.pause };
     case 'SET_TIMER_STOP':
       return initialState;
     case 'DECREMENT_TIMER_INTERVAL':

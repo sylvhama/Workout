@@ -60,7 +60,7 @@ class Timer extends Component {
       length,
       interval,
       index,
-      play,
+      pause,
       incrementIndex,
       setTimerStop
     } = this.props;
@@ -68,8 +68,8 @@ class Timer extends Component {
       clearInterval(intervalId);
       this.speak('end');
       setTimerStop();
-    } else if (!nextProps.play) clearInterval(intervalId);
-    else if (!play) this.initInterval();
+    } else if (nextProps.pause) clearInterval(intervalId);
+    else if (pause) this.initInterval();
     else if (interval === 0) incrementIndex();
   }
 
@@ -106,7 +106,7 @@ Timer.propTypes = {
   type: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   length: PropTypes.number.isRequired,
-  play: PropTypes.bool.isRequired,
+  pause: PropTypes.bool.isRequired,
   decrementInterval: PropTypes.func.isRequired,
   incrementIndex: PropTypes.func.isRequired
 };

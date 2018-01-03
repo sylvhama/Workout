@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
   ...state.timer.intervals[state.timer.index],
   index: state.timer.index,
   length: state.timer.intervals.length,
-  play: state.timer.play
+  pause: state.timer.pause
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

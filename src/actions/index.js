@@ -40,8 +40,9 @@ export const setTimerStart = intervals => ({
   intervals
 });
 
-export const setTimerPause = () => ({
-  type: 'SET_TIMER_PAUSE'
+export const setTimerPause = pause => ({
+  type: 'SET_TIMER_PAUSE',
+  pause
 });
 
 export const setTimerStop = () => ({
