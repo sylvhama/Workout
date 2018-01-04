@@ -11,7 +11,8 @@ const mapStateToProps = state => ({
   ...state.timer.intervals[state.timer.index],
   index: state.timer.index,
   length: state.timer.intervals.length,
-  pause: state.timer.pause
+  pause: state.timer.pause,
+  hasRests: state.config.restInterval > 0
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

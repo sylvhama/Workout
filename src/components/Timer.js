@@ -88,7 +88,7 @@ class Timer extends Component {
   }
 
   render() {
-    const { interval, index, length, type } = this.props;
+    const { interval, index, length, type, hasRests } = this.props;
     return (
       <Fragment>
         <P>
@@ -99,7 +99,12 @@ class Timer extends Component {
         <H2>
           <MinutesSeconds duration={interval} />
         </H2>
-        <P hide={type === 'start'}>{`${index} / ${length - 1}`}</P>
+        <P hide={type === 'start'}>
+          {' '}
+          {hasRests
+            ? `${Math.round(index / 2)} / ${Math.round((length - 1) / 2)}`
+            : `${index} / ${length - 1}`}
+        </P>
       </Fragment>
     );
   }
@@ -111,8 +116,11 @@ Timer.propTypes = {
   index: PropTypes.number.isRequired,
   length: PropTypes.number.isRequired,
   pause: PropTypes.bool.isRequired,
+  hasRests: PropTypes.bool.isRequired,
   decrementInterval: PropTypes.func.isRequired,
-  incrementIndex: PropTypes.func.isRequired
+  incrementIndex: PropTypes.func.isRequired,
+  setTimerStop: PropTypes.func.isRequired,
+  setTimerPause: PropTypes.func.isRequired
 };
 
 export default Timer;
