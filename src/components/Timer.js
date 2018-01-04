@@ -25,6 +25,8 @@ class Timer extends Component {
     intervalId = setInterval(() => this.props.decrementInterval(), 1000);
   };
 
+  onBlur = () => this.props.setTimerPause(true);
+
   speak(type) {
     let speech;
     switch (type) {
@@ -52,6 +54,7 @@ class Timer extends Component {
 
   componentDidMount() {
     this.initInterval();
+    window.addEventListener('blur', this.onBlur);
     this.speak('start');
   }
 
@@ -81,6 +84,7 @@ class Timer extends Component {
 
   componentWillUnmount() {
     clearInterval(intervalId);
+    window.removeEventListener('blur', this.onBlur);
   }
 
   render() {

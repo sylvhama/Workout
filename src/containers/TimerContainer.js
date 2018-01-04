@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import {
   decrementTimerInterval,
   incrementTimerIndex,
-  setTimerStop
+  setTimerStop,
+  setTimerPause
 } from '../actions';
 import Timer from '../components/Timer';
 
@@ -22,6 +23,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   setTimerStop: () => {
     dispatch(setTimerStop());
+  },
+  setTimerPause: pause => {
+    dispatch(setTimerPause(pause));
   }
 });
 
