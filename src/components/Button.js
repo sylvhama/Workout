@@ -9,6 +9,7 @@ const StyledButton = styled.button`
   font-size: 1.5rem;
   background: none;
   cursor: pointer;
+  user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
   transition: background-color 0.25s ease;
   &:active {
