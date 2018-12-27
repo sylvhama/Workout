@@ -1,4 +1,7 @@
 # Workout :muscle:
+
+[![Build Status](https://travis-ci.com/sylvhama/Workout.svg?branch=master)](https://travis-ci.com/sylvhama/Workout)
+
 This project was created with [CodeSandbox](https://codesandbox.io/s/github/sylvhama/Workout) and bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). Icons were found on [IcoMoon](https://icomoon.io).
 My goal was to have some fun with:
 - [React](https://reactjs.org/)
