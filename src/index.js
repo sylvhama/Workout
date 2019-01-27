@@ -24,5 +24,3 @@ render(
   document.getElementById("root")
 );
 registerServiceWorker();
-if (window.hasOwnProperty("speechSynthesis"))
-  window.speechSynthesis.getVoices();

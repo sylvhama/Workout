@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import MinutesSeconds from './MinutesSeconds';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import MinutesSeconds from "./MinutesSeconds";
 
 const H2 = styled.h2`
   font-size: 4.5rem;
@@ -15,7 +15,7 @@ const H2 = styled.h2`
 const P = styled.p`
   font-size: 2rem;
   text-align: center;
-  ${props => props.hide && 'visibility: hidden;'};
+  ${props => props.hide && "visibility: hidden;"};
 `;
 
 let intervalId;
@@ -30,23 +30,22 @@ class Timer extends Component {
   speak(type) {
     let speech;
     switch (type) {
-      case 'start':
-        speech = 'Get ready.';
+      case "start":
+        speech = "Get ready.";
         break;
-      case 'workout':
-        speech = 'Workout!';
+      case "workout":
+        speech = "Workout!";
         break;
-      case 'rest':
-        speech = 'Rest.';
+      case "rest":
+        speech = "Rest.";
         break;
-      case 'end':
-        speech = 'Good job!';
+      case "end":
+        speech = "Good job!";
         break;
       default:
         return;
     }
     const utterance = new SpeechSynthesisUtterance(speech);
-    utterance.voice = window.speechSynthesis.getVoices()[4];
     utterance.rate = 1.1;
     utterance.pitch = 1.1;
     window.speechSynthesis.speak(utterance);
@@ -54,8 +53,8 @@ class Timer extends Component {
 
   componentDidMount() {
     this.initInterval();
-    window.addEventListener('blur', this.onBlur);
-    this.speak('start');
+    window.addEventListener("blur", this.onBlur);
+    this.speak("start");
   }
 
   componentWillUpdate(nextProps) {
@@ -69,7 +68,7 @@ class Timer extends Component {
     } = this.props;
     if (interval === 0 && index + 1 === length) {
       clearInterval(intervalId);
-      this.speak('end');
+      this.speak("end");
       setTimerStop();
     } else if (nextProps.pause) clearInterval(intervalId);
     else if (pause) this.initInterval();
@@ -77,14 +76,14 @@ class Timer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!window.hasOwnProperty('speechSynthesis')) return;
+    if (!window.hasOwnProperty("speechSynthesis")) return;
     const { index, type } = this.props;
     if (index !== prevProps.index) this.speak(type);
   }
 
   componentWillUnmount() {
     clearInterval(intervalId);
-    window.removeEventListener('blur', this.onBlur);
+    window.removeEventListener("blur", this.onBlur);
   }
 
   render() {
@@ -92,15 +91,17 @@ class Timer extends Component {
     return (
       <Fragment>
         <P>
-          {type === 'start'
-            ? '👌 Get Ready'
-            : type === 'workout' ? '💪 Workout!' : type === 'rest' && '✋ Rest'}
+          {type === "start"
+            ? "👌 Get Ready"
+            : type === "workout"
+            ? "💪 Workout!"
+            : type === "rest" && "✋ Rest"}
         </P>
         <H2>
           <MinutesSeconds duration={interval} />
         </H2>
-        <P hide={type === 'start'}>
-          {' '}
+        <P hide={type === "start"}>
+          {" "}
           {hasRests
             ? `${Math.round(index / 2)} / ${Math.round((length - 1) / 2)}`
             : `${index} / ${length - 1}`}
