@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import MinutesSeconds from "./MinutesSeconds";
+import VisuallyHidden from "./VisuallyHidden";
 import { getSeconds, getMinutes } from "../scripts/time";
 
 const H2 = styled.h2`
@@ -93,6 +94,9 @@ class Timer extends Component {
     const minutes = getMinutes(interval).toString();
     const seconds = getSeconds(interval, minutes).toString();
 
+    const currentInterval = hasRests ? Math.round(index / 2) : index;
+    const totlaIntervals = hasRests ? Math.round((length - 1) / 2) : length - 1;
+
     return (
       <Fragment>
         <P>
@@ -102,15 +106,16 @@ class Timer extends Component {
             ? "💪 Workout!"
             : type === "rest" && "✋ Rest"}
         </P>
-        <H2>
+
+        <H2 aria-hidden="true">
           <MinutesSeconds minutes={minutes} seconds={seconds} />
         </H2>
-        <P hide={type === "start"}>
-          {" "}
-          {hasRests
-            ? `${Math.round(index / 2)} / ${Math.round((length - 1) / 2)}`
-            : `${index} / ${length - 1}`}
+        <VisuallyHidden>{`${minutes} minutes and ${seconds} seconds left`}</VisuallyHidden>
+
+        <P aria-hidden="true" hide={type === "start"}>
+          {`${currentInterval} / ${totlaIntervals}`}
         </P>
+        <VisuallyHidden>{`${currentInterval} intervals left on ${totlaIntervals}`}</VisuallyHidden>
       </Fragment>
     );
   }

@@ -4,15 +4,17 @@
 
 This project was created with [CodeSandbox](https://codesandbox.io/s/github/sylvhama/Workout) and bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). Icons were found on [IcoMoon](https://icomoon.io).
 My goal was to have some fun with:
+
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org)
 - [styled-components](https://www.styled-components.com/)
 - [CSS Grid](https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228)
 - [Speech Synthesis API](https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API)
+- [Wake Lock API](https://web.dev/wakelock/)
 - [Prettier](https://prettier.io/)
 
-
 ## What is it for?
+
 Create a set of timers for your exercise routine. I wanted to make a PWA equivalent of [Interval Timer](https://play.google.com/store/apps/details?id=cc.dreamspark.intervaltimer&hl=en).
 
 ## Available Scripts
