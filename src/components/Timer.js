@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import MinutesSeconds from "./MinutesSeconds";
+import { getSeconds, getMinutes } from "../scripts/time";
 
 const H2 = styled.h2`
   font-size: 4.5rem;
@@ -88,6 +89,10 @@ class Timer extends Component {
 
   render() {
     const { interval, index, length, type, hasRests } = this.props;
+
+    const minutes = getMinutes(interval).toString();
+    const seconds = getSeconds(interval, minutes).toString();
+
     return (
       <Fragment>
         <P>
@@ -98,7 +103,7 @@ class Timer extends Component {
             : type === "rest" && "✋ Rest"}
         </P>
         <H2>
-          <MinutesSeconds duration={interval} />
+          <MinutesSeconds minutes={minutes} seconds={seconds} />
         </H2>
         <P hide={type === "start"}>
           {" "}
