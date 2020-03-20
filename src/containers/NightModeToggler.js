@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { toggleNightMode } from '../actions';
-import Button from '../components/Button';
+import React from "react";
+import { connect } from "react-redux";
+import { toggleNightMode } from "../actions";
+import Button from "../components/Button";
 
 const mapStateToProps = state => ({
   nightMode: state.nightMode
@@ -14,11 +14,19 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 function NightModeButton({ nightMode, onClick }) {
-  return <Button onClick={onClick}>{nightMode ? '🌞' : '🌜'}</Button>;
+  return (
+    <Button
+      aria-label={nightMode ? "Enable light mode" : "Enable dark mode"}
+      onClick={onClick}
+    >
+      {nightMode ? "🌞" : "🌜"}
+    </Button>
+  );
 }
 
-const NightModeToggler = connect(mapStateToProps, mapDispatchToProps)(
-  NightModeButton
-);
+const NightModeToggler = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NightModeButton);
 
 export default NightModeToggler;

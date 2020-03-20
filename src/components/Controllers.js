@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Button from './Button';
-import Icon from './Icon';
-import { play, pause, stop } from '../scripts/icons';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import Button from "./Button";
+import Icon from "./Icon";
+import { play, pause, stop } from "../scripts/icons";
+import { enterOrSpacePress } from "../scripts/enterOrSpacePress";
 
 const Nav = styled.nav`
   display: grid;
@@ -15,7 +16,7 @@ const Nav = styled.nav`
 
 const Play = styled(Button)`
   ${props =>
-    !props.timerShow && props.timerPause ? 'grid-column: 1 / -1;' : null};
+    !props.timerShow && props.timerPause ? "grid-column: 1 / -1;" : null};
 `;
 
 export default function Controllers({
@@ -32,34 +33,50 @@ export default function Controllers({
     <Nav>
       {timerPause ? (
         <Play
-          onClick={() => {
-            if (!timerShow) {
-              const intervals = [{ interval: 5, type: 'start' }];
-              for (let i = 0; i < counter; i++) {
-                intervals.push({ interval: workInterval, type: 'workout' });
-                if (restInterval)
-                  intervals.push({ interval: restInterval, type: 'rest' });
-              }
-              setTimerStart(intervals);
-            } else setTimerPause(false);
-          }}
+          aria-label="Start workout"
+          onKeyPress={event => enterOrSpacePress(event, onPlay)}
+          onClick={onPlay}
           timerShow={timerShow}
           timerPause={timerPause}
         >
           <Icon icon={play} size={32} />
         </Play>
       ) : (
-        <Button onClick={() => setTimerPause(true)}>
+        <Button
+          aria-label="Pause workout"
+          onKeyPress={event => enterOrSpacePress(event, onPause)}
+          onClick={onPause}
+        >
           <Icon icon={pause} size={32} />
         </Button>
       )}
       {timerShow && (
-        <Button onClick={setTimerStop}>
+        <Button
+          aria-label="Stop workout"
+          onKeyPress={event => enterOrSpacePress(event, setTimerStop)}
+          onClick={setTimerStop}
+        >
           <Icon icon={stop} size={32} />
         </Button>
       )}
     </Nav>
   );
+
+  function onPlay() {
+    if (!timerShow) {
+      const intervals = [{ interval: 5, type: "start" }];
+      for (let i = 0; i < counter; i++) {
+        intervals.push({ interval: workInterval, type: "workout" });
+        if (restInterval)
+          intervals.push({ interval: restInterval, type: "rest" });
+      }
+      setTimerStart(intervals);
+    } else setTimerPause(false);
+  }
+
+  function onPause() {
+    setTimerPause(true);
+  }
 }
 
 Controllers.propTypes = {

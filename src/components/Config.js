@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import MinutesSeconds from './MinutesSeconds';
-import Button from './Button';
-import Icon from './Icon';
-import { plus, minus } from '../scripts/icons';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import MinutesSeconds from "./MinutesSeconds";
+import Button from "./Button";
+import Icon from "./Icon";
+import { plus, minus } from "../scripts/icons";
+import { enterOrSpacePress } from "../scripts/enterOrSpacePress";
 
 const Row = styled.div`
   display: grid;
@@ -81,6 +82,11 @@ export default function Config({
       <Row>
         <Title>How many work intervals?</Title>
         <Button
+          aria-label="Decrement number of work intervals"
+          onKeyDown={event =>
+            enterOrSpacePress(event, () => interval(decrementCounter))
+          }
+          onKeyUp={event => enterOrSpacePress(event, clearTimers)}
           onMouseUp={() => !isMobile && clearTimers()}
           onMouseLeave={() => !isMobile && clearTimers()}
           onMouseDown={() => !isMobile && interval(decrementCounter)}
@@ -92,6 +98,11 @@ export default function Config({
         </Button>
         <P>{counter}</P>
         <Button
+          aria-label="Increment number of work intervals"
+          onKeyDown={event =>
+            enterOrSpacePress(event, () => interval(incrementCounter))
+          }
+          onKeyUp={event => enterOrSpacePress(event, clearTimers)}
           onMouseUp={() => !isMobile && clearTimers()}
           onMouseLeave={() => !isMobile && clearTimers()}
           onMouseDown={() => !isMobile && interval(incrementCounter)}
@@ -105,6 +116,11 @@ export default function Config({
       <Row>
         <Title>Work interval</Title>
         <Button
+          aria-label="Decrement work interval duration"
+          onKeyDown={event =>
+            enterOrSpacePress(event, () => interval(decrementWorkInterval))
+          }
+          onKeyUp={event => enterOrSpacePress(event, clearTimers)}
           onMouseUp={() => !isMobile && clearTimers()}
           onMouseLeave={() => !isMobile && clearTimers()}
           onMouseDown={() => !isMobile && interval(decrementWorkInterval)}
@@ -118,6 +134,11 @@ export default function Config({
           <MinutesSeconds duration={workInterval} />
         </P>
         <Button
+          aria-label="Increment work interval duration"
+          onKeyDown={event =>
+            enterOrSpacePress(event, () => interval(incrementWorkInterval))
+          }
+          onKeyUp={event => enterOrSpacePress(event, clearTimers)}
           onMouseUp={() => !isMobile && clearTimers()}
           onMouseLeave={() => !isMobile && clearTimers()}
           onMouseDown={() => !isMobile && interval(incrementWorkInterval)}
@@ -131,6 +152,11 @@ export default function Config({
       <Row>
         <Title>Rest interval</Title>
         <Button
+          aria-label="Decrement rest interval duration"
+          onKeyDown={event =>
+            enterOrSpacePress(event, () => interval(decrementRestInterval))
+          }
+          onKeyUp={event => enterOrSpacePress(event, clearTimers)}
           onMouseUp={() => !isMobile && clearTimers()}
           onMouseLeave={() => !isMobile && clearTimers()}
           onMouseDown={() => !isMobile && interval(decrementRestInterval)}
@@ -144,6 +170,11 @@ export default function Config({
           <MinutesSeconds duration={restInterval} />
         </P>
         <Button
+          aria-label="Increment rest interval duration"
+          onKeyDown={event =>
+            enterOrSpacePress(event, () => interval(incrementRestInterval))
+          }
+          onKeyUp={event => enterOrSpacePress(event, clearTimers)}
           onMouseUp={() => !isMobile && clearTimers()}
           onMouseLeave={() => !isMobile && clearTimers()}
           onMouseDown={() => !isMobile && interval(incrementRestInterval)}
@@ -155,7 +186,12 @@ export default function Config({
         </Button>
       </Row>
       <Row>
-        <SmallButton onClick={resetConfig}>Reset</SmallButton>
+        <SmallButton
+          onKeyPress={event => enterOrSpacePress(event, resetConfig)}
+          onClick={resetConfig}
+        >
+          Reset
+        </SmallButton>
       </Row>
     </Fragment>
   );

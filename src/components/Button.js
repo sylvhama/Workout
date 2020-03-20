@@ -11,7 +11,8 @@ export default styled.button`
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
   transition: background-color 0.25s ease;
-  &:active {
+  &:active,
+  &:focus {
     background-color: rgba(0, 0, 0, 0.3);
   }
 `;
