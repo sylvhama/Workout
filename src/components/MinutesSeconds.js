@@ -1,22 +1,19 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { getSeconds, getMinutes } from '../scripts/time';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
-export default function MinutesSeconds({ duration }) {
-  const minutes = getMinutes(duration).toString();
-  const seconds = getSeconds(duration, minutes).toString();
-
+export default function MinutesSeconds({ minutes, seconds }) {
   return (
     <Fragment>
-      {minutes.length === 1 && '0'}
+      {minutes.length === 1 && "0"}
       {minutes}
       <span>:</span>
-      {seconds.length === 1 && '0'}
+      {seconds.length === 1 && "0"}
       {seconds}
     </Fragment>
   );
 }
 
 MinutesSeconds.propTypes = {
-  duration: PropTypes.number.isRequired
+  minutes: PropTypes.string.isRequired,
+  seconds: PropTypes.string.isRequired
 };

@@ -4,8 +4,10 @@ import styled from "styled-components";
 import MinutesSeconds from "./MinutesSeconds";
 import Button from "./Button";
 import Icon from "./Icon";
+import VisuallyHidden from "./VisuallyHidden";
 import { plus, minus } from "../scripts/icons";
 import { enterOrSpacePress } from "../scripts/enterOrSpacePress";
+import { getSeconds, getMinutes } from "../scripts/time";
 
 const Row = styled.div`
   display: grid;
@@ -31,6 +33,7 @@ const P = styled.p`
   & span {
     padding: 0 0.5rem;
   }
+  ${({ hide }) => hide && `display: none;`}
 `;
 
 const SmallButton = styled(Button)`
@@ -77,6 +80,18 @@ export default function Config({
   incrementRestInterval,
   restInterval
 }) {
+  const workIntervalMinutes = getMinutes(workInterval).toString();
+  const workIntervalSeconds = getSeconds(
+    workInterval,
+    workIntervalMinutes
+  ).toString();
+
+  const restIntervalMinutes = getMinutes(restInterval).toString();
+  const restIntervalSeconds = getSeconds(
+    restInterval,
+    restIntervalMinutes
+  ).toString();
+
   return (
     <Fragment>
       <Row>
@@ -96,7 +111,10 @@ export default function Config({
         >
           <Icon icon={minus} />
         </Button>
-        <P>{counter}</P>
+
+        <P aria-hidden="true">{counter}</P>
+        <VisuallyHidden>{`${counter} work intervals`}</VisuallyHidden>
+
         <Button
           aria-label="Increment number of work intervals"
           onKeyDown={event =>
@@ -130,9 +148,15 @@ export default function Config({
         >
           <Icon icon={minus} />
         </Button>
-        <P>
-          <MinutesSeconds duration={workInterval} />
+
+        <P aria-hidden="true">
+          <MinutesSeconds
+            minutes={workIntervalMinutes}
+            seconds={workIntervalSeconds}
+          />
         </P>
+        <VisuallyHidden>{`Work interval of ${workIntervalMinutes} minutes and ${workIntervalSeconds} seconds`}</VisuallyHidden>
+
         <Button
           aria-label="Increment work interval duration"
           onKeyDown={event =>
@@ -166,9 +190,15 @@ export default function Config({
         >
           <Icon icon={minus} />
         </Button>
-        <P>
-          <MinutesSeconds duration={restInterval} />
+
+        <P aria-hidden="true">
+          <MinutesSeconds
+            minutes={restIntervalMinutes}
+            seconds={restIntervalSeconds}
+          />
         </P>
+        <VisuallyHidden>{`Rest interval of ${restIntervalMinutes} minutes and ${restIntervalSeconds} seconds`}</VisuallyHidden>
+
         <Button
           aria-label="Increment rest interval duration"
           onKeyDown={event =>
