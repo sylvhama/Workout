@@ -115,7 +115,9 @@ class Timer extends Component {
         <P aria-hidden="true" hide={type === "start"}>
           {`${currentInterval} / ${totlaIntervals}`}
         </P>
-        <VisuallyHidden>{`${currentInterval} intervals left on ${totlaIntervals}`}</VisuallyHidden>
+        {type !== "start" && (
+          <VisuallyHidden>{`${currentInterval} intervals left on ${totlaIntervals}`}</VisuallyHidden>
+        )}
       </Fragment>
     );
   }
