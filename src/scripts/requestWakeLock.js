@@ -1,6 +1,7 @@
 let wakeLock = null;
 
 export const requestWakeLock = async () => {
+  if (!navigator.wakeLock) return;
   try {
     wakeLock = await navigator.wakeLock.request("screen");
     wakeLock.addEventListener("release", () => {
