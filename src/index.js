@@ -7,7 +7,8 @@ import throttle from "lodash/throttle";
 import AppContainer from "./containers/AppContainer";
 import reducer from "./reducers";
 import { loadState, cleanState, saveState } from "./scripts/localStorage";
-import registerServiceWorker from "./scripts/createServiceWorker.js";
+import registerServiceWorker from "./scripts/createServiceWorker";
+import { requestWakeLock } from "./scripts/requestWakeLock";
 
 const theme = { color: { light: "#eaeaea", dark: "#333" } };
 
@@ -23,4 +24,7 @@ render(
   </ThemeProvider>,
   document.getElementById("root")
 );
+
 registerServiceWorker();
+
+requestWakeLock();
